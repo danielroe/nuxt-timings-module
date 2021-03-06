@@ -2,6 +2,10 @@
  * @type {import('@nuxt/types').Plugin}
  */
 export default function ({ store, res, beforeNuxtRender }) {
+  if (!store) {
+    return
+  }
+
   let lastMutation = ''
   store.subscribe((mutation) => {
     if (lastMutation) {
