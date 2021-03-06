@@ -26,10 +26,10 @@ describe('Nuxt module', () => {
     const timings = (headers['server-timing'] as string).match(/([^;]*)(;dur=\d*)(;desc=[^,]*)?, /g)
 
     expect(timings).toEqual(expect.arrayContaining([
-      expect.stringContaining('~/plugins/long-load'),
-      expect.stringContaining('~/plugins/quick-load'),
-      expect.stringContaining('nuxtServerInit action'),
-      expect.stringContaining('dispatchedAction action')
+      expect.stringContaining('plugins-long-load'),
+      expect.stringContaining('plugins-quick-load'),
+      expect.stringContaining('nuxtServerInit'),
+      expect.stringContaining('dispatchedAction')
     ]))
   }, 50000)
 })
