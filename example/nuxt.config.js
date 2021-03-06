@@ -4,7 +4,9 @@ export default {
   ],
   plugins: [
     '~/plugins/long-load',
-    '~/plugins/quick-load'
+    {
+      src: '~/plugins/quick-load'
+    }
   ],
   timings: {
     enabled: true

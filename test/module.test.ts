@@ -33,3 +33,24 @@ describe('Nuxt module', () => {
     ]))
   }, 50000)
 })
+
+describe('Disabled module', () => {
+  setupTest({
+    testDir: __dirname,
+    fixture: '../example',
+    server: true,
+    config: {
+      timings: {
+        enabled: false
+      }
+    }
+  })
+
+  test('should not add timings to server response when disabled', async () => {
+    const { headers } = await get('/')
+
+    const timings = (headers['server-timing'] as string)
+
+    expect(timings).toBeFalsy()
+  }, 50000)
+})

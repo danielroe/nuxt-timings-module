@@ -30,7 +30,7 @@ function templateFile (
 
 const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
   const nuxtOptions = this.nuxt.options as NuxtOptions
-  const providedOptions = defu(this.options[CONFIG_KEY] || {}, moduleOptions, { enabled: nuxtOptions.dev })
+  const providedOptions = defu(this.options[CONFIG_KEY] /* istanbul ignore next */ || {}, moduleOptions, { enabled: nuxtOptions.dev })
 
   if (!providedOptions.enabled) {
     return
