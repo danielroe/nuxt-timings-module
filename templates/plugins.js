@@ -16,5 +16,5 @@ export default function ({ res }) {
   } else {
     console.timeEnd(`running ${plugin}`)
   }
-  res.timing[mode](plugin)
+  res.timing[mode](plugin.replace('~/', '').replace(/\//g, '-').replace('.js', ''), plugin)
 }

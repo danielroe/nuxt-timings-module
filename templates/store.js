@@ -1,3 +1,7 @@
+function sanitizeString (string) {
+  return string.replace(/\//g, '-')
+}
+
 /**
  * @type {import('@nuxt/types').Plugin}
  */
@@ -11,8 +15,8 @@ export default function ({ store, res, beforeNuxtRender }) {
     if (lastMutation) {
       res.timing.end(lastMutation)
     }
-    lastMutation = mutation.type
-    res.timing.start(lastMutation, `${lastMutation} mutation`)
+    lastMutation = sanitizeString(mutation.type)
+    res.timing.start(lastMutation, `${mutation.type} (mutation)`)
   }, { prepend: true })
 
   let lastAction = ''
@@ -20,8 +24,8 @@ export default function ({ store, res, beforeNuxtRender }) {
     if (lastAction) {
       res.timing.end(lastAction)
     }
-    lastAction = action.type
-    res.timing.start(lastAction, `${lastAction} action`)
+    lastAction = sanitizeString(action.type)
+    res.timing.start(lastAction, `${action.type} (action)`)
   }, { prepend: true })
 
   beforeNuxtRender(() => {

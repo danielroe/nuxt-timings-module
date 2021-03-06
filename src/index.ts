@@ -37,18 +37,20 @@ const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
   }
 
   consola.info(
-    `Using ${chalk.bold('timings')} to validate server-rendered HTML`
+    `Adding ${chalk.bold('timings')} to server responses.`
   )
 
   nuxtOptions.server.timing = { total: true }
 
   nuxtOptions.plugins = nuxtOptions.plugins.reduce((plugins, plugin, index) => {
+    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxtOptions.buildDir + '/', '')
+
     const before = templateFile.call(
       this,
       '../templates/plugins.js',
       'timings-plugins-' + index + 'before.server.js',
       {
-        plugin: JSON.stringify(plugin),
+        plugin: pluginName,
         mode: 'start'
       }
     )
@@ -57,7 +59,7 @@ const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
       '../templates/plugins.js',
       'timings-plugins-' + index + 'after.server.js',
       {
-        plugin: JSON.stringify(plugin),
+        plugin: pluginName,
         mode: 'end'
       }
     )
