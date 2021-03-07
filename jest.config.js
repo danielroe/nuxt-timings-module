@@ -9,6 +9,9 @@ module.exports = {
       }
     ]
   },
+  moduleNameMapper: {
+    'nuxt-timings': 'src/index.ts'
+  },
   collectCoverage: true,
-  collectCoverageFrom: ['src/**']
+  collectCoverageFrom: ['src/*.ts']
 }

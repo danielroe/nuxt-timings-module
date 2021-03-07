@@ -1,6 +1,10 @@
 export default {
+  alias: {
+    'nuxt-timings': require.resolve('../src/index.ts')
+  },
   modules: [
-    '../src/index.ts'
+    '../src/index.ts',
+    '@nuxt/typescript-build'
   ],
   plugins: [
     '~/plugins/long-load',

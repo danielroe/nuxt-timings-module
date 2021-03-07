@@ -1,31 +1,17 @@
-import { Module, NuxtOptions } from '@nuxt/types'
-import { ModuleThis } from '@nuxt/types/config/module'
-import { NuxtOptionsPlugin } from '@nuxt/types/config/plugin'
+import type { Module, NuxtOptions } from '@nuxt/types'
 
-import chalk from 'chalk'
+import { bold } from 'chalk'
 import consola from 'consola'
 import defu from 'defu'
-import { resolve } from 'upath'
 
 import { name, version } from '../package.json'
+import { registerFetchTimings } from './fetch'
+import { registerPluginTimings } from './plugins'
+import { registerStoreTimings } from './store'
 
 const CONFIG_KEY = 'timings'
 type ModuleOptions = {
   enabled?: boolean
-}
-
-function templateFile (
-  this: ModuleThis,
-  relativeSrc: string,
-  fileName: string,
-  options: Record<string, any>
-) {
-  const { dst } = this.addTemplate({
-    src: resolve(__dirname, relativeSrc),
-    fileName,
-    options
-  })
-  return resolve(this.nuxt.options.buildDir, dst)
 }
 
 const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
@@ -36,41 +22,13 @@ const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
     return
   }
 
-  consola.info(
-    `Adding ${chalk.bold('timings')} to server responses.`
-  )
+  consola.info(`Enabling ${bold('nuxt-timings')}.`)
 
   nuxtOptions.server.timing = { total: true }
 
-  nuxtOptions.plugins = nuxtOptions.plugins.reduce((plugins, plugin, index) => {
-    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxtOptions.buildDir + '/', '')
-
-    const before = templateFile.call(
-      this,
-      '../templates/plugins.js',
-      'timings-plugins-' + index + 'before.server.js',
-      {
-        plugin: pluginName,
-        mode: 'start'
-      }
-    )
-    const after = templateFile.call(
-      this,
-      '../templates/plugins.js',
-      'timings-plugins-' + index + 'after.server.js',
-      {
-        plugin: pluginName,
-        mode: 'end'
-      }
-    )
-    plugins.push(before, plugin, after)
-    return plugins
-  }, [] as NuxtOptionsPlugin[])
-
-  this.addPlugin({
-    src: resolve(__dirname, '../templates/store.js'),
-    fileName: 'timings-store.server.js'
-  })
+  registerPluginTimings.call(this)
+  registerStoreTimings.call(this)
+  registerFetchTimings.call(this)
 }
 ;(nuxtModule as any).meta = { name, version }
 
@@ -85,4 +43,5 @@ declare module '@nuxt/types' {
 
 export default nuxtModule
 
-export { ModuleOptions }
+export type { ModuleOptions }
+export * from './utils'

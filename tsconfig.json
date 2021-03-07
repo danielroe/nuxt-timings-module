@@ -16,7 +16,10 @@
     "types": [
       "node",
       "jest"
-    ]
+    ],
+    "paths": {
+      "nuxt-timings": ["./src/index.ts"]
+    }
   },
   "exclude": [
     "node_modules",

@@ -1,18 +1,5 @@
 import { setupTest, get } from '@nuxt/test-utils'
 
-const mockReporter = {
-  error: jest.fn(),
-  info: jest.fn(),
-  success: jest.fn()
-}
-
-jest.mock('consola', () => ({
-  info: jest.fn(),
-  success: jest.fn(),
-  debug: jest.fn(),
-  withTag: jest.fn().mockImplementation(() => mockReporter)
-}))
-
 describe('Nuxt module', () => {
   setupTest({
     testDir: __dirname,
@@ -28,8 +15,8 @@ describe('Nuxt module', () => {
     expect(timings).toEqual(expect.arrayContaining([
       expect.stringContaining('plugins-long-load'),
       expect.stringContaining('plugins-quick-load'),
-      expect.stringContaining('nuxtServerInit'),
-      expect.stringContaining('dispatchedAction')
+      expect.stringContaining('store-nuxtServerInit'),
+      expect.stringContaining('store-dispatchedAction')
     ]))
   }, 50000)
 })
