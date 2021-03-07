@@ -1,3 +1,10 @@
+## [0.1.0](https://github.com/danielroe/nuxt-timings-module/compare/0.0.2...0.1.0) (2021-03-07)
+
+
+### Features
+
+* improvements ([f481179](https://github.com/danielroe/nuxt-timings-module/commit/f481179c787418a57a545d67999f5cf158949b26))
+
 ### 0.0.2 (2021-03-06)
 
 
