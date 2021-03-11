@@ -1,10 +1,11 @@
-import { resolve } from 'upath'
+import { extname } from 'upath'
 
 import type { ModuleThis } from '@nuxt/types/config/module'
 
 export function registerFetchTimings (this: ModuleThis) {
+  const src = require.resolve('./templates/fetch')
   this.addPlugin({
-    src: resolve(__dirname, '../dist/templates/fetch.js'),
-    fileName: 'timings-fetch.server.js'
+    src,
+    fileName: 'timings-fetch.server' + extname(src)
   })
 }

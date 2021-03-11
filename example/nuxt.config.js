@@ -1,11 +1,12 @@
+import { join } from 'path'
+
 export default {
   alias: {
-    'nuxt-timings/dist/runtime': require.resolve('../src/runtime/index.ts'),
-    'nuxt-timings': require.resolve('../src/index.ts')
+    'nuxt-timings': join(__dirname, '../src')
   },
   modules: [
-    '../src/index.ts',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '../src/index.ts'
   ],
   plugins: [
     '~/plugins/long-load',
