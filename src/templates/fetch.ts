@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import { prettyTimer, sanitizeString } from 'nuxt-timings'
+import { prettyTimer, sanitizeString } from 'nuxt-timings/dist/runtime'
 
 function hasFetch (vm: Vue) {
   return vm.$options && typeof vm.$options.fetch === 'function' && !vm.$options.fetch.length

@@ -11,8 +11,13 @@
   ],
   "repository": "danielroe/nuxt-timings-module",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./dist/package.json",
+    "./dist/runtime": "./dist/runtime"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],

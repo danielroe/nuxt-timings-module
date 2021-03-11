@@ -10,6 +10,7 @@ module.exports = {
     ]
   },
   moduleNameMapper: {
+    'nuxt-timings/dist/runtime': '<rootDir>/src/runtime',
     'nuxt-timings': '<rootDir>/src'
   },
   collectCoverage: true,

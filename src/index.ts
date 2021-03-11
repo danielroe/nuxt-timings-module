@@ -44,4 +44,3 @@ declare module '@nuxt/types' {
 export default nuxtModule
 
 export type { ModuleOptions }
-export * from './utils'
