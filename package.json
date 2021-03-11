@@ -14,8 +14,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./dist/package.json",
-    "./dist/templates/*": "./dist/templates/*",
-    "./dist/runtime": "./dist/runtime"
+    "./templates/*": "./dist/templates/*",
+    "./runtime": "./dist/runtime.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,7 +29,7 @@
     "prepare": "yarn build",
     "prepublishOnly": "yarn test",
     "release": "yarn build && yarn test && release-it",
-    "test": "yarn lint && yarn build && jest"
+    "test": "yarn lint && yarn build && yarn jest"
   },
   "husky": {
     "gitHooks": {

@@ -1,10 +1,10 @@
 export default {
   alias: {
-    'nuxt-timings/dist/runtime': require.resolve('../src/runtime/index.ts'),
-    'nuxt-timings': require.resolve('../src/index.ts')
+    'nuxt-timings/runtime': require.resolve('../src/runtime'),
+    'nuxt-timings': require.resolve('../src')
   },
   modules: [
-    '../src/index.ts',
+    '../src',
     '@nuxt/typescript-build'
   ],
   plugins: [

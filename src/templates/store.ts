@@ -1,7 +1,7 @@
 import type { ServerResponse } from 'http'
 import type { Plugin } from '@nuxt/types'
 
-import { prettyTimer, sanitizeString } from 'nuxt-timings/dist/runtime'
+import { prettyTimer, sanitizeString } from 'nuxt-timings/runtime'
 
 export function processTiming (res: ServerResponse, oldTiming: string, _newTiming: string, description: string) {
   if (oldTiming) {

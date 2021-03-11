@@ -7,6 +7,7 @@
       "esnext",
       "dom"
     ],
+    "allowJs": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "declaration": false,
@@ -18,8 +19,8 @@
       "jest"
     ],
     "paths": {
-      "nuxt-timings/dist/runtime": ["./src/runtime/index.ts"],
-      "nuxt-timings": ["./src/index.ts"]
+      "nuxt-timings": ["./src/index.ts"],
+      "nuxt-timings/*": ["./src/*"]
     }
   },
   "exclude": [

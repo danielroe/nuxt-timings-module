@@ -1,10 +1,11 @@
-import { resolve } from 'upath'
+import { extname } from 'upath'
 
 import type { ModuleThis } from '@nuxt/types/config/module'
 
 export function registerStoreTimings (this: ModuleThis) {
+  const src = require.resolve('./templates/store')
   this.addPlugin({
-    src: resolve(__dirname, '../dist/templates/store.js'),
-    fileName: 'timings-store.server.js'
+    src,
+    fileName: 'timings-store.server' + extname(src)
   })
 }
