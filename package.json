@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.14.3",
-    "@babel/preset-env": "7.14.2",
+    "@babel/preset-env": "7.14.4",
     "@babel/preset-typescript": "7.13.0",
     "@nuxt/test-utils": "0.2.2",
     "@nuxt/types": "2.15.6",
@@ -49,13 +49,13 @@
     "@release-it/conventional-changelog": "2.0.1",
     "@types/jest": "26.0.23",
     "babel-eslint": "latest",
-    "babel-jest": "26.6.3",
+    "babel-jest": "27.0.2",
     "eslint": "7.27.0",
     "husky": "6.0.0",
-    "jest": "26.6.3",
+    "jest": "27.0.3",
     "lint-staged": "11.0.0",
-    "nuxt-edge": "2.16.0-27017293.a53fd32d",
-    "release-it": "14.6.2",
+    "nuxt-edge": "2.16.0-27037465.b116d0de",
+    "release-it": "14.7.0",
     "siroc": "0.10.1"
   },
   "peerDependencies": {
