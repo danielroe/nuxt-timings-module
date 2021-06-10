@@ -1,10 +1,11 @@
-import type { Module, NuxtOptions } from '@nuxt/types'
+// eslint-disable-next-line
+import type { Module } from '@nuxt/types'
+import { defineNuxtModule } from '@nuxt/kit'
 
 import { bold } from 'chalk'
 import consola from 'consola'
-import defu from 'defu'
 
-import { name, version } from '../package.json'
+import { name } from '../package.json'
 import { registerFetchTimings } from './fetch'
 import { registerPluginTimings } from './plugins'
 import { registerStoreTimings } from './store'
@@ -14,23 +15,24 @@ type ModuleOptions = {
   enabled?: boolean
 }
 
-const nuxtModule: Module<ModuleOptions> = function (moduleOptions) {
-  const nuxtOptions = this.nuxt.options as NuxtOptions
-  const providedOptions = defu(this.options[CONFIG_KEY] /* istanbul ignore next */ || {}, moduleOptions, { enabled: nuxtOptions.dev })
+export default defineNuxtModule(nuxt => ({
+  name,
+  configKey: CONFIG_KEY,
+  defaults: { enabled: nuxt.options.dev },
+  setup (options, nuxt) {
+    if (!options.enabled) {
+      return
+    }
 
-  if (!providedOptions.enabled) {
-    return
+    consola.info(`Enabling ${bold('nuxt-timings')}.`)
+
+    nuxt.options.server.timing = { total: true } as any
+
+    registerPluginTimings()
+    registerStoreTimings()
+    registerFetchTimings()
   }
-
-  consola.info(`Enabling ${bold('nuxt-timings')}.`)
-
-  nuxtOptions.server.timing = { total: true }
-
-  registerPluginTimings.call(this)
-  registerStoreTimings.call(this)
-  registerFetchTimings.call(this)
-}
-;(nuxtModule as any).meta = { name, version }
+}))
 
 declare module '@nuxt/types' {
   interface NuxtConfig {
@@ -40,7 +42,5 @@ declare module '@nuxt/types' {
     [CONFIG_KEY]?: ModuleOptions;
   } // Nuxt 2.9 - 2.13
 }
-
-export default nuxtModule
 
 export type { ModuleOptions }

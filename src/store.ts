@@ -1,10 +1,9 @@
+import { addPlugin } from '@nuxt/kit'
 import { extname } from 'upath'
 
-import type { ModuleThis } from '@nuxt/types/config/module'
-
-export function registerStoreTimings (this: ModuleThis) {
+export function registerStoreTimings () {
   const src = require.resolve('./templates/store')
-  this.addPlugin({
+  addPlugin({
     src,
     fileName: 'timings-store.server' + extname(src)
   })

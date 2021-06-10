@@ -1,32 +1,26 @@
+import { addTemplate, useNuxt } from '@nuxt/kit'
 import { extname, resolve } from 'upath'
 
-import type { NuxtOptions } from '@nuxt/types'
-import type { ModuleThis } from '@nuxt/types/config/module'
 import type { NuxtOptionsPlugin } from '@nuxt/types/config/plugin'
 
 function templateFile (
-  this: ModuleThis,
   src: string,
   fileName: string,
   options: Record<string, any>
 ) {
-  const { dst } = this.addTemplate({
-    src,
-    fileName,
-    options
-  })
-  return resolve(this.nuxt.options.buildDir, dst)
+  const nuxt = useNuxt()
+  const { dst } = addTemplate({ src, fileName, options })
+  return resolve(nuxt.options.buildDir, dst)
 }
 
-export function registerPluginTimings (this: ModuleThis) {
-  const nuxtOptions = this.nuxt.options as NuxtOptions
+export function registerPluginTimings () {
+  const nuxt = useNuxt()
 
-  nuxtOptions.plugins = nuxtOptions.plugins.reduce((plugins, plugin, index) => {
-    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxtOptions.buildDir + '/', '').replace('~/plugins/', '').replace('~/', '')
+  nuxt.options.plugins = nuxt.options.plugins.reduce((plugins, plugin, index) => {
+    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxt.options.buildDir + '/', '').replace('~/plugins/', '').replace('~/', '')
 
     const src = require.resolve('./templates/plugins')
-    const before = templateFile.call(
-      this,
+    const before = templateFile(
       src,
       'timings-plugins-' + index + 'before.server' + extname(src),
       {
@@ -34,8 +28,7 @@ export function registerPluginTimings (this: ModuleThis) {
         mode: 'start'
       }
     )
-    const after = templateFile.call(
-      this,
+    const after = templateFile(
       src,
       'timings-plugins-' + index + 'after.server' + extname(src),
       {
