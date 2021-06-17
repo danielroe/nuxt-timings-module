@@ -1,7 +1,7 @@
 import type { ServerResponse } from 'http'
 import type { Plugin } from '@nuxt/types'
 
-import { prettyTimer, sanitizeString } from 'nuxt-timings/runtime'
+import { prettyTimer, sanitizeString, removeInvalidChars } from 'nuxt-timings/runtime'
 
 export function processTiming (res: ServerResponse, oldTiming: string, _newTiming: string, description: string) {
   if (oldTiming) {
@@ -10,7 +10,7 @@ export function processTiming (res: ServerResponse, oldTiming: string, _newTimin
   }
   const newTiming = 'store-' + sanitizeString(_newTiming)
   prettyTimer('time', 'store', 'running', newTiming)
-  res.timing.start(newTiming, description)
+  res.timing.start(newTiming, removeInvalidChars(description))
   return newTiming
 }
 
