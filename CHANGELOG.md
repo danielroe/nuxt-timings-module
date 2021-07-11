@@ -1,3 +1,10 @@
+### [0.1.1](https://github.com/danielroe/nuxt-timings-module/compare/0.1.0...0.1.1) (2021-07-11)
+
+
+### Bug Fixes
+
+* invalid character in header ([#59](https://github.com/danielroe/nuxt-timings-module/issues/59)) ([9e69d91](https://github.com/danielroe/nuxt-timings-module/commit/9e69d91bc9fbc2aa9c2ced9606f9d5240fd07e4c))
+
 ## [0.1.0](https://github.com/danielroe/nuxt-timings-module/compare/0.0.2...0.1.0) (2021-03-07)
 
 
