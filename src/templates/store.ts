@@ -10,7 +10,7 @@ export function processTiming (res: ServerResponse, oldTiming: string, _newTimin
   }
   const newTiming = 'store-' + sanitizeString(_newTiming)
   prettyTimer('time', 'store', 'running', newTiming)
-  res.timing.start(newTiming, description)
+  res.timing.start(newTiming, sanitizeString(description))
   return newTiming
 }
 
