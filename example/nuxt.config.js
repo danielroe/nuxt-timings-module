@@ -1,6 +1,6 @@
 export default {
   alias: {
-    'nuxt-timings/runtime': require.resolve('../src/runtime'),
+    'nuxt-timings/dist/runtime': require.resolve('../src/runtime'),
     'nuxt-timings': require.resolve('../src')
   },
   modules: [

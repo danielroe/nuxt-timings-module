@@ -20,7 +20,12 @@
     ],
     "paths": {
       "nuxt-timings": ["./src/index.ts"],
-      "nuxt-timings/*": ["./src/*"]
+      "nuxt-timings/dist": [
+        "./src/*"
+      ],
+      "nuxt-timings/*": [
+        "./src/*"
+      ]
     }
   },
   "exclude": [

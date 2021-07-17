@@ -13,9 +13,9 @@
   "license": "MIT",
   "exports": {
     ".": "./dist/index.js",
-    "./package.json": "./dist/package.json",
-    "./templates/*": "./dist/templates/*",
-    "./runtime": "./dist/runtime.js"
+    "./package.json": "./package.json",
+    "./templates/*": "./dist/templates/*.js",
+    "./dist/runtime": "./dist/runtime.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
