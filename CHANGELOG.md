@@ -1,3 +1,10 @@
+### [0.1.2](https://github.com/danielroe/nuxt-timings-module/compare/0.1.1...0.1.2) (2021-07-17)
+
+
+### Bug Fixes
+
+* packaging issues with subpath exports ([589ffcd](https://github.com/danielroe/nuxt-timings-module/commit/589ffcd8de1306d03476fa6848d67bc06cf7156d))
+
 ### [0.1.1](https://github.com/danielroe/nuxt-timings-module/compare/0.1.0...0.1.1) (2021-07-11)
 
 
