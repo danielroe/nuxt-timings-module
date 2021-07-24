@@ -55,7 +55,7 @@
     "jest": "27.0.6",
     "lint-staged": "11.1.1",
     "nuxt-edge": "2.16.0-27108013.8e725d34",
-    "release-it": "14.10.0",
+    "release-it": "14.10.1",
     "siroc": "0.14.0",
     "ts-loader": "8.3.0"
   },
