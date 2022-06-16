@@ -1,5 +1,5 @@
 import { addTemplate, useNuxt } from '@nuxt/kit'
-import { extname, resolve } from 'upath'
+import { extname, normalize, resolve } from 'pathe'
 
 import type { NuxtOptionsPlugin } from '@nuxt/types/config/plugin'
 
@@ -17,7 +17,10 @@ export function registerPluginTimings () {
   const nuxt = useNuxt()
 
   nuxt.options.plugins = nuxt.options.plugins.reduce((plugins, plugin, index) => {
-    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxt.options.buildDir + '/', '').replace('~/plugins/', '').replace('~/', '')
+    const pluginName = normalize(typeof plugin === 'string' ? plugin : plugin.src)
+      .replace(nuxt.options.buildDir + '/', '')
+      .replace('~/plugins/', '')
+      .replace('~/', '')
 
     const src = require.resolve('./templates/plugins')
     const before = templateFile(
