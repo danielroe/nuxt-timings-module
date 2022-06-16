@@ -17,14 +17,17 @@ export function registerPluginTimings () {
   const nuxt = useNuxt()
 
   nuxt.options.plugins = nuxt.options.plugins.reduce((plugins, plugin, index) => {
-    const pluginName = (typeof plugin === 'string' ? plugin : plugin.src).replace(nuxt.options.buildDir + '/', '').replace('~/plugins/', '').replace('~/', '')
+    const pluginName = normalize(typeof plugin === 'string' ? plugin : plugin.src)
+      .replace(nuxt.options.buildDir + '/', '')
+      .replace('~/plugins/', '')
+      .replace('~/', '')
 
     const src = require.resolve('./templates/plugins')
     const before = templateFile(
       src,
       'timings-plugins-' + index + 'before.server' + extname(src),
       {
-        plugin: normalize(pluginName),
+        plugin: pluginName,
         mode: 'start'
       }
     )
@@ -32,7 +35,7 @@ export function registerPluginTimings () {
       src,
       'timings-plugins-' + index + 'after.server' + extname(src),
       {
-        plugin: normalize(pluginName),
+        plugin: pluginName,
         mode: 'end'
       }
     )
