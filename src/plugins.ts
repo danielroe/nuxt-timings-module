@@ -1,5 +1,5 @@
 import { addTemplate, useNuxt } from '@nuxt/kit'
-import { extname, resolve, normalizeSafe } from 'upath'
+import { extname, normalize, resolve } from 'pathe'
 
 import type { NuxtOptionsPlugin } from '@nuxt/types/config/plugin'
 
@@ -24,7 +24,7 @@ export function registerPluginTimings () {
       src,
       'timings-plugins-' + index + 'before.server' + extname(src),
       {
-        plugin: normalizeSafe(pluginName),
+        plugin: normalize(pluginName),
         mode: 'start'
       }
     )
@@ -32,7 +32,7 @@ export function registerPluginTimings () {
       src,
       'timings-plugins-' + index + 'after.server' + extname(src),
       {
-        plugin: normalizeSafe(pluginName),
+        plugin: normalize(pluginName),
         mode: 'end'
       }
     )

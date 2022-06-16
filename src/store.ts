@@ -1,5 +1,5 @@
 import { addPlugin } from '@nuxt/kit'
-import { extname } from 'upath'
+import { extname } from 'pathe'
 
 export function registerStoreTimings () {
   const src = require.resolve('./templates/store')
