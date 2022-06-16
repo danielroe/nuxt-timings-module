@@ -1,3 +1,15 @@
+
+
+## [0.2.0](https://github.com/danielroe/nuxt-timings-module/compare/0.1.2...0.2.0) (2022-06-16)
+
+### ⚠ BREAKING CHANGES
+
+* Node 14+ is required.
+
+### Bug Fixes
+
+* normalise plugin names to prevent malformed windows paths ([#162](https://github.com/danielroe/nuxt-timings-module/issues/162)) ([c662449](https://github.com/danielroe/nuxt-timings-module/commit/c662449e7f89affa5048853a8ef682eed66672a1))
+
 ### [0.1.2](https://github.com/danielroe/nuxt-timings-module/compare/0.1.1...0.1.2) (2021-07-17)
 
 
@@ -26,4 +38,3 @@
 
 * don't observe store if it doesn't exist ([66fe22f](https://github.com/danielroe/nuxt-timings-module/commit/66fe22fcd7ddf520bc868dd24f03279938c4ebbc))
 * improve timing dx ([30db6e4](https://github.com/danielroe/nuxt-timings-module/commit/30db6e475ec7457143e5e808e58c106b9c34788d))
-

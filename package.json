@@ -1,6 +1,6 @@
 {
   "name": "nuxt-timings",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Timings integration for Nuxt",
   "keywords": [
     "nuxt",
@@ -66,6 +66,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "volta": {
     "node": "16.15.1"
