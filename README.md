@@ -52,7 +52,7 @@ yarn add nuxt-timings # or npm install nuxt-timings
 [npm-version-href]: https://npmjs.com/package/nuxt-timings
 
 [npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-timings.svg
-[npm-downloads-href]: https://npmjs.com/package/nuxt-timings
+[npm-downloads-href]: https://npm.chart.dev/nuxt-timings
 
 [github-actions-ci-src]: https://github.com/danielroe/nuxt-timings-module/workflows/ci/badge.svg
 [github-actions-ci-href]: https://github.com/danielroe/nuxt-timings-module/actions?query=workflow%3Aci
