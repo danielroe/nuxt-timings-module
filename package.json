@@ -43,7 +43,7 @@
     "@babel/preset-env": "7.18.2",
     "@babel/preset-typescript": "7.17.12",
     "@nuxt/test-utils": "0.2.2",
-    "@nuxt/types": "2.15.8",
+    "@nuxt/types": "2.18.1",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxtjs/eslint-config-typescript": "10.0.0",
     "@release-it/conventional-changelog": "5.0.0",
