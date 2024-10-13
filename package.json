@@ -57,7 +57,7 @@
     "nuxt-edge": "2.16.0-27358576.777a4b7f",
     "release-it": "15.0.0",
     "siroc": "0.16.0",
-    "ts-loader": "8.3.0"
+    "ts-loader": "8.4.0"
   },
   "peerDependencies": {
     "chalk": "^3.0.0 || ^4.0.0",
